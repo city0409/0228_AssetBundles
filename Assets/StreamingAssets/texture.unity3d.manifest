@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 3237473370
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 24f1b113e76a4c2929dadbd0b19d2cdb
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 21f0dc8ebad690f009368069428e0a1a
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Standard Assets/2D/Sprites/RobotBoyRollSprite.png
+- Assets/Standard Assets/2D/Sprites/RobotBoyIdleSprite.png
+- Assets/Standard Assets/2D/Sprites/RobotBoyWalkSprite.png
+- Assets/Standard Assets/2D/Sprites/BackgroundNavyGridSprite.png
+- Assets/Standard Assets/2D/Sprites/RobotBoyDeathSprite.png
+- Assets/Standard Assets/2D/Sprites/RobotBoyCrouchSprite.png
+- Assets/Standard Assets/2D/Sprites/CratePinkGridSprite.png
+- Assets/Standard Assets/2D/Sprites/RobotBoyRunSprite.png
+- Assets/Standard Assets/2D/Sprites/PlatformWhiteSprite.png
+- Assets/Standard Assets/2D/Sprites/RobotBoyJumpSprite.png
+Dependencies: []

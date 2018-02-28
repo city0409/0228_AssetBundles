@@ -1,0 +1,48 @@
+ManifestFileVersion: 0
+CRC: 2387139199
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: bb77ccd3d0aab11ad0cc782c758ceb20
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 48ed78fcaff690cb656a93b63c2b0be7
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
+- Class: 61
+  Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: c3d7b34a3bb2d4e4b926e7e729d3d410, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Standard Assets/2D/Prefabs/CharacterRobotBoy.prefab
+- Assets/Standard Assets/2D/Sprites/BackgroundGreyGridSprite.png
+Dependencies:
+- D:/Documents/AssetBundles/Assets/StreamingAssets/texture.unity3d
