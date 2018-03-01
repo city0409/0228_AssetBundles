@@ -1,0 +1,7 @@
+StreamingAssets
+StreamingAssets.manifest
+test.unity3d
+test.unity3d.manifest
+texture.unity3d
+texture.unity3d.manifest
+LuaScripts\ass.lua
