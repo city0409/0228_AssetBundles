@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class Creater : MonoBehaviour 
 {
@@ -9,25 +10,32 @@ public class Creater : MonoBehaviour
 	{
         if (Input.GetKeyDown(KeyCode.S))
         {
-            CreateOBJByName();
+            StartCoroutine(CreateOBJByName("CharacterRobotBoy","test.unity3d"));
         }
 
     }
 	
-	private void CreateOBJByName() 
+	private IEnumerator CreateOBJByName(string objName,string bundleName) 
 	{
-        AssetBundle abm = AssetBundle.LoadFromFile(AppConst.DataPath + "/StreamingAssets");
+        yield return StartCoroutine(AssetBundleManager.DownloadAssetBundle(Path.Combine(AppConst.DataPath, "Streamingassets"), 0));
+        AssetBundle abm = AssetBundleManager.GetAssetBundle(Path.Combine(AppConst.DataPath, "Streamingassets"), 0);
+
+        //AssetBundle abm = AssetBundle.LoadFromFile(AppConst.DataPath + "/StreamingAssets");
         AssetBundleManifest manifest = (AssetBundleManifest)abm.LoadAsset("AssetBundleManifest");
-        string[] depends = manifest.GetAllDependencies("test.unity3d");
+        string[] depends = manifest.GetAllDependencies(bundleName);
 
         AssetBundle[] dependsAssetBundle = new AssetBundle[depends.Length];
 
         for (int i = 0; i < depends.Length; i++)
         {
-            dependsAssetBundle[i]=AssetBundle.LoadFromFile(AppConst.DataPath + "/"+ depends[i]);
+            //dependsAssetBundle[i]=AssetBundle.LoadFromFile(AppConst.DataPath + "/"+ depends[i]);
+            yield return StartCoroutine(AssetBundleManager.DownloadAssetBundle(AppConst.DataPath+depends[i], 0));
+            dependsAssetBundle[i] = AssetBundleManager.GetAssetBundle(AppConst.DataPath + depends[i], 0);
         }
 
-        AssetBundle ab = AssetBundle.LoadFromFile(AppConst.DataPath + "/test.unity3d");
+        yield return StartCoroutine(AssetBundleManager.DownloadAssetBundle(AppConst.DataPath + bundleName, 0));
+        AssetBundle ab = AssetBundleManager.GetAssetBundle(AppConst.DataPath + bundleName, 0);
+        //AssetBundle ab = AssetBundle.LoadFromFile(AppConst.DataPath + "/test.unity3d");
         GameObject obj = ab.LoadAsset<GameObject>("CharacterRobotBoy");
         Instantiate(obj);
 
