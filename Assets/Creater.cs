@@ -5,8 +5,9 @@ using System.IO;
 
 public class Creater : MonoBehaviour 
 {
-
-	private void Update() 
+    private AssetBundleManifest manifest;
+    private AssetBundle manifestBundle;
+    private void Update() 
 	{
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -18,10 +19,10 @@ public class Creater : MonoBehaviour
 	private IEnumerator CreateOBJByName(string objName,string bundleName) 
 	{
         yield return StartCoroutine(AssetBundleManager.DownloadAssetBundle(Path.Combine(AppConst.DataPath, "Streamingassets"), 0));
-        AssetBundle abm = AssetBundleManager.GetAssetBundle(Path.Combine(AppConst.DataPath, "Streamingassets"), 0);
+        manifestBundle = AssetBundleManager.GetAssetBundle(Path.Combine(AppConst.DataPath, "Streamingassets"), 0);
 
         //AssetBundle abm = AssetBundle.LoadFromFile(AppConst.DataPath + "/StreamingAssets");
-        AssetBundleManifest manifest = (AssetBundleManifest)abm.LoadAsset("AssetBundleManifest");
+        manifest = (AssetBundleManifest)manifestBundle.LoadAsset("AssetBundleManifest");
         string[] depends = manifest.GetAllDependencies(bundleName);
 
         AssetBundle[] dependsAssetBundle = new AssetBundle[depends.Length];
@@ -36,9 +37,11 @@ public class Creater : MonoBehaviour
         yield return StartCoroutine(AssetBundleManager.DownloadAssetBundle(AppConst.DataPath + bundleName, 0));
         AssetBundle ab = AssetBundleManager.GetAssetBundle(AppConst.DataPath + bundleName, 0);
         //AssetBundle ab = AssetBundle.LoadFromFile(AppConst.DataPath + "/test.unity3d");
-        GameObject obj = ab.LoadAsset<GameObject>("CharacterRobotBoy");
-        Instantiate(obj);
-
+        if (ab)
+        {
+            GameObject obj = ab.LoadAsset<GameObject>("CharacterRobotBoy");
+            Instantiate(obj);
+        }
     }
 
     //private IEnumerator CreateOBJByName2()

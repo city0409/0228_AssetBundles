@@ -5,7 +5,7 @@ using UnityEngine;
 public static class AssetBundleManager  
 {
     static private Dictionary<string, AssetBundleRef> dictAssetBundleRefs;
-
+    static private bool isLoading = false;
     static AssetBundleManager()
     {
         dictAssetBundleRefs = new Dictionary<string, AssetBundleRef>();
@@ -39,12 +39,13 @@ public static class AssetBundleManager
     public static IEnumerator DownloadAssetBundle(string url,int version)
     {
         string keyName = url + version.ToString();
-        if (dictAssetBundleRefs.ContainsKey(keyName))
+        if (dictAssetBundleRefs.ContainsKey(keyName)||isLoading)
         {
             yield return null;
         }
         else
         {
+            isLoading = true;
             AssetBundleRef abRef = new AssetBundleRef(url, version);
             AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(url);
             while (!request .isDone )
@@ -53,6 +54,8 @@ public static class AssetBundleManager
             }
             abRef.assetBundle = request.assetBundle;
             dictAssetBundleRefs.Add(keyName, abRef);
+            isLoading = false;
+
         }
 
     }
